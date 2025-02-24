@@ -2,9 +2,27 @@
 import { ArrowRight, Leaf, Heart, Database } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from 'react-router-dom';
+import { toast } from "@/components/ui/use-toast";
 import Navbar from '@/components/Navbar';
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Welcome!",
+      description: "Thank you for getting started with GauSeva.",
+    });
+    // Navigate to breeding assistant page
+    navigate('/breeding-assistant');
+  };
+
+  const handleLearnMore = () => {
+    // Navigate to about page
+    navigate('/marketplace');
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -22,11 +40,19 @@ const Index = () => {
             and sustainable practices.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary-dark">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary-dark"
+              onClick={handleGetStarted}
+            >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={handleLearnMore}
+            >
               Learn More
             </Button>
           </div>
